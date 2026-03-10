@@ -1,0 +1,563 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title> Calculadora – SLEDAI-2K + SDI</title>
+
+<style>
+
+body{
+background:#87CEEB;
+font-family:Arial, sans-serif;
+margin:0;
+padding:40px 0;
+}
+
+.logo {
+  max-width: 60px;           /* adjust size as needed */
+  height: auto;
+}
+
+.container{
+background:#fffde7;
+width:1200px;
+max-width:95%;
+margin:auto;
+padding:30px;
+border-radius:12px;
+box-shadow:0 8px 20px rgba(0,0,0,0.15);
+}
+
+.title{
+font-size:26px;
+font-weight:bold;
+color:#B22222;
+margin-bottom:30px;
+text-align:center;
+text-decoration:underline;
+}
+
+.titleGrid{
+display:grid;
+grid-template-columns:1fr 1fr;
+gap:40px;
+margin-bottom:5px;
+}
+
+.scoretitle{
+font-size:20px;
+font-weight:bold;
+color:#3366cc;
+background:#e6f0ff;
+border:2px solid #3366cc;
+border-radius:8px;
+padding:10px 14px;
+display: inline-block;
+justify-self:center;
+margin-bottom:25px;
+}
+
+.subtitleGrid{
+display:grid;
+grid-template-columns:1fr 1fr;
+gap:40px;
+margin-bottom:18px;
+}
+
+.timesubtitle{
+text-align:center;
+font-weight:bold;
+color:#555;
+font-size:20px;
+font-style:italic;
+}
+
+.organ{
+margin-bottom:10px;
+padding-top:15px;
+border-top:2px solid #ddd;
+}
+
+.organTitle{
+font-size:19px;
+font-weight:bold;
+color:#B22222;
+text-align:center;
+margin-top:5px;
+margin-bottom:14px;
+}
+
+.organGrid{
+display:grid;
+grid-template-columns:1fr 1fr;
+gap:20px;
+}
+
+.organGrid > div {
+    padding-left: 1.5cm; /* adds ~0.5 cm space on the left of each column */
+}
+
+.divider{
+border:none;
+border-top:2px solid #888;
+margin:10px 0 25px 0;
+}
+
+.columnTitle{
+font-weight:bold;
+color:#3366cc;
+margin-bottom:8px;
+}
+
+.organGrid label{
+display:block;
+margin-bottom:5px;
+}
+
+fieldset{
+margin-top:8px;
+margin-bottom:12px;
+}
+
+button{
+padding:10px 20px;
+font-size:15px;
+border:none;
+border-radius:6px;
+background:#3366cc;
+color:white;
+cursor:pointer;
+margin-right:10px;
+margin-top:15px;
+}
+
+button:hover{
+opacity:0.85;
+}
+
+.result{
+font-size:20px;
+font-weight:bold;
+margin-top:15px;
+}
+
+.resultContainer {
+    text-align: center;
+    margin: 15px 0;  /* spacing above and below */
+}
+
+.result, #sledaiActivity {
+    display: block;
+    margin: 8px 0;   /* spacing between result lines */
+}
+
+.badge{
+display:inline-block;
+padding:4px 10px;
+border-radius:8px;
+margin-top:10px;
+font-weight:bold;
+margin-left: 10px;
+vertical-align: middle;
+}
+
+.remission{background:#4CAF50;color:white;}
+.mild{background:#8BC34A;color:white;}
+.moderate{background:#FFC107;color:black;}
+.high{background:#FF9800;color:white;}
+.veryhigh{background:#F44336;color:white;}
+
+.reference{
+font-size:12px;
+color:#555;
+margin-top:40px;
+}
+
+@media(max-width:800px){
+.organGrid{
+grid-template-columns:1fr;
+}
+}
+
+/* Horizontal line separator */
+.sectionSeparator {
+    border: 0;
+    border-top: 2px solid #aaa;  /* line color and thickness */
+    margin: 20px 0;              /* vertical spacing */
+}
+
+/* Center buttons */
+.buttonContainer {
+    text-align: center;
+    margin: 20px 0;
+}
+
+.buttonContainer button {
+    margin: 8px;  /* spacing between buttons */
+}
+
+</style>
+</head>
+
+<body>
+
+<div class="container">
+
+<h2 class="title">
+  <a href="https://ormedica.wordpress.com">
+    <img src="LogOM5.png" alt="Logo" class="logo">
+  </a>
+  Calculadores del Lupus Eritematós Sistèmic
+</h2>
+  
+<div class="titleGrid">
+
+<div class="scoretitle">
+  <h3>SLEDAI-2K (Activitat lúpica)</h3>
+</div>
+
+<div class="scoretitle">
+  <h3>Índex de dany crònic del lupus SLICC/ACR (SDI)</h3>
+</div>
+
+</div>
+
+<div class="subtitleGrid">
+
+<div class="timesubtitle">
+Actual (darrers 10 dies)
+</div>
+
+<div class="timesubtitle">
+Persistent (≥ 6 mesos)
+</div>
+
+</div>
+
+<!-- ================= EYE ================= -->
+
+<div class="organ">
+
+<div class="organTitle">Ull</div>
+
+<div class="organGrid">
+
+<div>
+<label><input type="checkbox" value="8" class="sledai"> Alteració visual atribuible al lupus (+8)</label>
+</div>
+
+<div>
+<label><input type="checkbox" value="1" class="sdi"> Cataractes, ever (+1)</label>
+<label><input type="checkbox" value="1" class="sdi"> Alteració de la retina / atròfia òptica (+1)</label>
+</div>
+</div>
+</div>
+
+
+<!-- ================= CNS ================= -->
+
+<div class="organ">
+
+<div class="organTitle">Sistema Nerviós Central</div>
+
+<div class="organGrid">
+
+<div>
+
+<label><input type="checkbox" value="8" class="sledai"> Convulsions d'inici recent, excloent altres causes (+8)</label>
+<label><input type="checkbox" value="8" class="sledai"> Psicosi de causa no farmacològica (+8)</label>
+<label><input type="checkbox" value="8" class="sledai"> Síndrome orgànica cerebral (+8)</label>
+<label><input type="checkbox" value="8" class="sledai"> Malaltia dels nervis cranials, d'inici recent (+8)</label>
+<label><input type="checkbox" value="8" class="sledai"> Cefalea atribuible al lupus (+8)</label>
+<label><input type="checkbox" value="8" class="sledai"> Ictus recent (+8)</label>
+
+</div>
+<div>
+<label><input type="checkbox" value="1" class="sdi"> Convulsions (≥6 mesos)(+1)</label>
+<label><input type="checkbox" value="1" class="sdi"> Psicosi de causa no farmacològica (+1)</label>
+<label><input type="checkbox" value="1" class="sdi"> Alteracions cognitives (+1)</label>
+<label><input type="checkbox" value="1" class="sdi"> Neuropatia perifèrica o central (+1)</label>
+<label><input type="checkbox" value="1" class="sdi"> Mielitis transversa (+1)</label>
+<fieldset>
+<legend>Ictus</legend>
+<label><input type="radio" name="ictus" value="1" class="sdi"> un episodi (+1)</label>
+<label><input type="radio" name="ictus" value="2" class="sdi"> >1 episodi (+2)</label>
+</fieldset>
+
+</div>
+</div>
+</div>
+
+<!-- ================= SKIN ================= -->
+<div class="organ">
+<div class="organTitle">Pell i Mucoses</div>
+<div class="organGrid">
+
+<div>
+<label><input type="checkbox" value="2" class="sledai"> Rash d'aparició recent (+2)</label>
+<label><input type="checkbox" value="2" class="sledai"> Alopècia d'aparició recent, o recurrent (+2)</label>
+<label><input type="checkbox" value="2" class="sledai"> Úlceres orals o nasals (+2)</label>
+
+</div>
+<div>
+<label><input type="checkbox" value="1" class="sdi"> Alopècia crònica cicatritzant (+1)</label>
+<label><input type="checkbox" value="1" class="sdi"> Cicatriu o pannicle en una localització diferent del cuir cabellut i del tou dels dits (+1)</label>
+<label><input type="checkbox" value="1" class="sdi"> Úlceres cutànies (no degut a trombosi), per més de 6 mesos (+1)</label>
+</div>
+</div>
+</div>
+
+<!-- ================= MUSCULOSKELETAL ================= -->
+<div class="organ">
+<div class="organTitle">Musculo-esquelètic</div>
+<div class="organGrid">
+<div>
+<label><input type="checkbox" value="4" class="sledai"> Artritis (> 2 joints) (+4)</label>
+<label><input type="checkbox" value="4" class="sledai"> Miositis (+4)</label>
+
+</div>
+<div>
+<label><input type="checkbox" value="1" class="sdi"> Artritis erosiva o deformant (inclou deformitats reductibles) (+1)</label>
+<label><input type="checkbox" value="1" class="sdi"> Osteoporosis amb fractures o col·lapse vertebral (+1) (+1)</label>
+<label><input type="checkbox" value="1" class="sdi"> Atròfia o debilitat musculars (+1) (+1)</label>
+<label><input type="checkbox" value="1" class="sdi"> Osteomielitis (+1)</label>
+<label><input type="checkbox" value="1" class="sdi"> Ruptura de tendó (+1)</label>
+
+<fieldset>
+<legend>Necrosi avascular</legend>
+<label><input type="radio" name="avascular" value="1" class="sdi"> En un òs únic (+1)</label>
+<label><input type="radio" name="avascular" value="2" class="sdi"> >1 ossos (+2)</label>
+</fieldset>
+
+</div>
+</div>
+</div>
+
+
+<!-- ================= RENAL ================= -->
+
+<div class="organ">
+<div class="organTitle">Renal</div>
+<div class="organGrid">
+
+<div>
+
+<label><input type="checkbox" value="4" class="sledai"> Hematúria (+4)</label>
+<label><input type="checkbox" value="4" class="sledai"> Proteinúria >0.5 g/day d'inici recent, o més elevada del normal (+4)</label>
+<label><input type="checkbox" value="4" class="sledai"> Cilindres urinaris hemàtics o granulars (+4)</label>
+
+</div>
+
+<div>
+
+<label><input type="checkbox" value="1" class="sdi"> Proteinúria ≥3.5 g/dia (+1)</label>
+
+<fieldset>
+<legend>Renal failure</legend>
+<label><input type="radio" name="renal" value="1" class="sdi"> Filtrat glomerular &lt;50% (+1)</label>
+<label><input type="radio" name="renal" value="3" class="sdi"> Malaltia renal en fase terminal (+3)</label>
+</fieldset>
+
+</div>
+</div>
+</div>
+
+<!-- ================= CARDIOPULMONARY ================= -->
+
+<div class="organ">
+<div class="organTitle">Cardiovascular & Pulmó</div>
+<div class="organGrid">
+
+<div>
+<label><input type="checkbox" value="2" class="sledai"> Pleuritis (+2)</label>
+<label><input type="checkbox" value="2" class="sledai"> Pericarditis (+2)</label>
+</div>
+<div>
+
+<label><input type="checkbox" value="1" class="sdi"> Hipertensió pulmonar (+1)</label>
+<label><input type="checkbox" value="1" class="sdi"> Fibrosi pulmonar (+1)</label>
+<label><input type="checkbox" value="1" class="sdi"> Pulmó encongit (Shrinking lung) (+1)</label>
+<label><input type="checkbox" value="1" class="sdi"> Fibrosi pleural (+1)</label>
+<label><input type="checkbox" value="1" class="sdi"> Infart pulmonar o ressecció pulmonar (no neoplàsica) (+1)</label>
+
+<label><input type="checkbox" value="1" class="sdi"> Angina o revascularització coronària (+1)</label>
+
+<fieldset>
+<legend>Antecedent d'Infart de miocardi</legend>
+<label><input type="radio" name="infarction" value="1" class="sdi"> Únic episodi previ d'infart (+1)</label>
+<label><input type="radio" name="infarction" value="2" class="sdi"> >1 episodis previs d'infart (+2)</label>
+</fieldset>
+
+<label><input type="checkbox" value="1" class="sdi"> Pericarditis de ≥ 6 mesos de durada, o pericardiectomia (+1)</label>
+<label><input type="checkbox" value="1" class="sdi"> Malaltia valvular cardiaca (+1)</label>
+<label><input type="checkbox" value="1" class="sdi"> Cardiomiopatia (disfunció ventricular) (+1)</label>
+<label><input type="checkbox" value="1" class="sdi"> Claudicació intermitent (+1)</label>
+<label><input type="checkbox" value="1" class="sdi"> Isquèmia perifèrica amb pèrdua tissular menor (tou dels dits) (+1)</label>
+<fieldset>
+<legend>Isquèmia perifèrica amb pèrdua tissular significativa (dits o membres), ever</legend>
+<label><input type="radio" name="infarction" value="1" class="sdi"> Una única localització (+1)</label>
+<label><input type="radio" name="infarction" value="2" class="sdi"> >1 localització (+2)</label>
+</fieldset>
+<label><input type="checkbox" value="1" class="sdi"> Trombosi venosa (+1)</label>
+</div>
+</div>
+</div>
+
+<!-- ================= GASTROINTESTINAL ================= -->
+
+<div class="organ">
+<div class="organTitle">Gastrointestinal</div>
+<div class="organGrid">
+
+<div>
+</div>
+
+<div>
+<fieldset>
+<legend>Antecedent d'infart o ressecció de budell distal al duodè, o de melsa, fetge o vesícula biliar</legend>
+<label><input type="radio" name="infarction" value="1" class="sdi"> Única localització (+1)</label>
+<label><input type="radio" name="infarction" value="2" class="sdi"> >1 localització (+2)</label>
+</fieldset>
+<label><input type="checkbox" value="1" class="sdi"> Insuficiència mesentèrica (+1)</label>
+<label><input type="checkbox" value="1" class="sdi"> Peritonitis crònica (+1)</label>
+<label><input type="checkbox" value="1" class="sdi"> Antecedent d'estenosi o cirurgia del tracte gastrointestinal superior (+1)</label>
+</div>
+</div>
+</div>
+
+<!-- ================= OTHER ================= -->
+<div class="organ">
+<div class="organTitle">Altres</div>
+<div class="organGrid">
+
+<div>
+<label><input type="checkbox" value="8" class="sledai"> Vasculitis (cutània o extracutània) atribuible al lupus (+8)</label>
+<label><input type="checkbox" value="1" class="sledai"> Febre >38ºC sense infecció (+1)</label>
+</div>
+
+<div>
+<label><input type="checkbox" value="1" class="sdi"> Diabetis (+1)</label>
+<label><input type="checkbox" value="1" class="sdi"> Insuficiència ovàrica prematura (+1)</label>
+<fieldset>
+<legend>Neoplàsia</legend>
+<label><input type="radio" name="infarction" value="1" class="sdi"> Primari únic (+1)</label>
+<label><input type="radio" name="infarction" value="2" class="sdi"> >1 neoplàsia primària (+2)</label>
+</fieldset>
+</div>
+</div>
+</div>
+
+<!-- ================= LAB ================= -->
+
+
+<div class="organ">
+<div class="organTitle">Laboratori</div>
+<div class="organGrid">
+
+<div>
+<label><input type="checkbox" value="2" class="sledai"> Complement baix (C3, C4 o CH50) (+2)</label>
+<label><input type="checkbox" value="2" class="sledai"> Anticossos anti-dsDNA (+2)</label>
+<label><input type="checkbox" value="1" class="sledai"> Trombopènia &lt;100,000 (+1)</label>
+<label><input type="checkbox" value="1" class="sledai"> Leucopènia &lt;3,000 (+1)</label>
+</div>
+
+<div>
+</div>
+</div>
+</div>
+
+<!-- Separator before buttons -->
+<hr class="sectionSeparator">
+<!-- ================= Buttons ================= -->
+
+<div class="buttonContainer">
+  <button onclick="calculateSLEDAI()">Calcular SLEDAI-2K</button>
+  <button onclick="resetSLEDAI()">Reset SLEDAI</button>
+  <button onclick="calculateSDI()">Calcular SDI</button>
+  <button onclick="resetSDI()">Reset SDI</button>
+</div>
+
+<div class="resultContainer">
+  <div class="result" id="sledaiResult"></div>
+  <div class="result" id="sdiResult"></div>
+</div>
+
+<hr class="sectionSeparator">
+
+<div class="reference">
+
+Gladman DD et al. The SLEDAI-2K. J Rheumatol 2002.  
+Gladman DD et al. The SLICC/ACR Damage Index. Arthritis Rheum 1996.
+
+</div>
+
+</div>
+
+<script>
+
+function calculateSLEDAI(){
+
+    let score=0;
+
+    document.querySelectorAll(".sledai:checked").forEach(
+    box=>score+=parseInt(box.value)
+    );
+
+    document.getElementById("sledaiResult").innerHTML="SLEDAI-2K Score: "+score;
+
+    let activity="";
+    let style="";
+
+    if(score===0){
+    activity="Remissió";
+    style="remission";
+    }
+    else if(score<=5){
+    activity="Activitat lleu";
+    style="mild";
+    }
+    else if(score<=10){
+    activity="Activitat moderada";
+    style="moderate";
+    }
+    else if(score<=19){
+    activity="Activitat alta";
+    style="high";
+    }
+    else{
+    activity="Activitat molt alta";
+    style="veryhigh";
+    }
+
+    // Display score and badge inline
+    document.getElementById("sledaiResult").innerHTML = 
+    `SLEDAI-2K Score: ${score} <span class="badge ${style}">${activity}</span>`;
+}
+
+function resetSLEDAI(){
+document.querySelectorAll(".sledai").forEach(box=>box.checked=false);
+document.getElementById("sledaiResult").innerHTML="";
+document.getElementById("sledaiActivity").innerHTML="";
+}
+
+function calculateSDI(){
+
+let score=0;
+
+document.querySelectorAll(".sdi:checked").forEach(
+box=>score+=parseInt(box.value)
+);
+
+document.getElementById("sdiResult").innerHTML="SDI Score: "+score;
+
+}
+
+function resetSDI(){
+document.querySelectorAll(".sdi").forEach(box=>box.checked=false);
+document.getElementById("sdiResult").innerHTML="";
+}
+
+</script>
+
+</body>
+</html>
